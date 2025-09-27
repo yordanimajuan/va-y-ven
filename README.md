@@ -10,7 +10,7 @@ npm install
 
 Uso
 
-Ejemplo básico en tester.js:
+Ejemplo básico en example.js:
 
 const vaYVen = require('./index');
 
