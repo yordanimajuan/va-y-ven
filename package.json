@@ -1,15 +1,16 @@
 {
-  "dependencies": {
-    "axios": "^1.12.2"
-  },
-  "name": "vay-y-ven",
+  "name": "va-y-ven",
   "version": "1.0.0",
-  "description": "",
+  "description": "Módulo Node.js para interactuar con la API de recargas Va y Ven (Yucatán). Permite validar tarjetas, consultar saldo, obtener paquetes y generar links de pago.",
   "main": "index.js",
   "scripts": {
-    "start": "node test.js"
+    "start": "node test.js",
+    "test": "echo \"No tests yet\""
   },
-  "keywords": [],
-  "author": "+Ju@n",
-  "license": "ISC"
+  "keywords": ["va-y-ven", "recargas", "tarjetas", "mercadopago", "yucatan"],
+  "author": "Ju@n",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.12.2"
+  }
 }

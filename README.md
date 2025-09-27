@@ -12,7 +12,7 @@ Uso
 
 Ejemplo básico en example.js:
 
-const vaYVen = require('./index');
+const vaYVen = require('va-y-ven');
 
 (async () => {
   try {
