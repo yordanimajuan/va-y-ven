@@ -1,23 +1,72 @@
-# Va-y-Ven - Cliente Node.js para consultar saldo
+Un módulo en Node.js para interactuar con la API de recargas del sistema de transporte Va y Ven (Yucatán).
+Permite validar tarjetas, consultar saldo, obtener paquetes de recarga y generar links de pago usando Mercado Pago.
+
+Instalación
+git clone https://github.com/yordanimajuan/va-y-ven.git
+cd va-y-ven
+npm install
 
 
-## Descripción
-`va-y-ven` es un módulo Node.js que permite **consultar el saldo de tarjetas Va y Ven (Yucatán)** directamente desde la API oficial.  
-Está diseñado para integrarse fácilmente en otros proyectos Node.js, bots o scripts CLI.
 
----
+Uso
 
-## Características
-- Consulta de saldo de tarjetas Va y Ven usando la API oficial.  
-- Devuelve el saldo en formato numérico o string.  
-- Fácil de integrar en otros proyectos Node.js.  
-- No requiere almacenamiento de CVV ni datos sensibles.
+Ejemplo básico en tester.js:
 
----
+const vaYVen = require('./index');
 
-## Instalación
+(async () => {
+  try {
+    // Validar tarjeta
+    const tarjeta = await vaYVen.consultarSaldoTarjeta("5000000000535616");
+    console.log("Tarjeta:", tarjeta);
 
-Si tu módulo está local:
+    // Obtener paquetes disponibles
+    const paquetes = await vaYVen.obtenerPaquetes();
+    console.log("Paquetes disponibles:", paquetes);
 
-```bash
-npm install ./va-y-ven
+    // Generar orden con un paquete
+    const orden = await vaYVen.crearOrdenConPaquete(tarjeta, paquetes[0]);
+    const linkPago = vaYVen.generarLinkPago(orden);
+
+    console.log("Link de pago:", linkPago);
+  } catch (err) {
+    console.error("Error:", err.message);
+  }
+})();
+
+Estructura del Proyecto
+va-y-ven/
+├── config/               # Configuración (API Key, Base URL)
+│   └── index.js
+├── src/
+│   ├── paquetes.js       # Manejo de paquetes
+│   ├── tarjetas.js       # Validación y saldo de tarjetas
+│   ├── ordenes.js        # Creación de órdenes
+├── index.js              # Punto de entrada
+├── example.js            # Ejemplo de uso
+├── package.json
+└── README.md
+
+Funciones Disponibles
+
+validarTarjeta(numeroTarjeta)
+
+consultarSaldoTarjeta(numeroTarjeta)
+
+obtenerPaquetes()
+
+crearOrdenConPaquete(tarjeta, paquete)
+
+generarLinkPago(orden)
+
+flujoCompletoConPaquete(numeroTarjeta, paquete)
+
+Licencia
+
+Este proyecto está bajo la licencia MIT.
+Puedes usarlo libremente, pero recuerda que depende de la API oficial de Va y Ven.
+
+Nota
+
+Este proyecto es no oficial y fue creado con fines de integración personal.
+No está afiliado con el Gobierno del Estado de Yucatán ni con Va y Ven.
