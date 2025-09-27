@@ -10,29 +10,33 @@ npm install
 
 Uso
 
-Ejemplo básico en example.js:
+Ejemplo básico 
 
+// Importa el módulo
 const vaYVen = require('va-y-ven');
 
 (async () => {
   try {
-    // Validar tarjeta
+    // 1️⃣ Consultar saldo de una tarjeta
     const tarjeta = await vaYVen.consultarSaldoTarjeta("5000000000535616");
-    console.log("Tarjeta:", tarjeta);
+    console.log("✅ Tarjeta:", tarjeta);
 
-    // Obtener paquetes disponibles
+    // 2️⃣ Obtener paquetes disponibles
     const paquetes = await vaYVen.obtenerPaquetes();
-    console.log("Paquetes disponibles:", paquetes);
+    console.log("📦 Paquetes disponibles:", paquetes);
 
-    // Generar orden con un paquete
+    // 3️⃣ Crear una orden con un paquete (por ejemplo el primero)
     const orden = await vaYVen.crearOrdenConPaquete(tarjeta, paquetes[0]);
-    const linkPago = vaYVen.generarLinkPago(orden);
 
-    console.log("Link de pago:", linkPago);
+    // 4️⃣ Generar link de pago
+    const linkPago = vaYVen.generarLinkPago(orden);
+    console.log("💳 Link de pago:", linkPago);
+
   } catch (err) {
-    console.error("Error:", err.message);
+    console.error("❌ Error:", err.message);
   }
 })();
+
 
 Estructura del Proyecto
 va-y-ven/
