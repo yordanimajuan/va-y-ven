@@ -24,6 +24,11 @@
 cd va-y-ven
 npm install</code></pre>
   </section>
+    <section>
+    <h2>Instalación desde NPM</h2>
+    <pre><code>
+npm install va-y-ven</code></pre>
+  </section>
 
   <section>
     <h2>Uso</h2>
